@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo</title>
+</head>
+<body>
+<form action="" method="POST">
+    {{ forms.as_p }}
+    {% csrf_token %}
+    <input type="submit">
+</form>
+
+<table border="solid">
+    <tr>
+        <th>Task pending</th>
+        <th>Added time</th>
+        <th>Task time</th>
+    </tr>
+    {% for task in list %}
+        <tr>
+            <td>{{ task.Task }}</td>
+            <td>{{ task.created }}</td>
+            <td>{{ task.tasktime }}</td>
+            <td>
+               <a href="{% url 'ToDoApp:del' task.id %}">remove</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
